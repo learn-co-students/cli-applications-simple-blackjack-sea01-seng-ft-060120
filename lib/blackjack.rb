@@ -33,19 +33,15 @@ end
 def hit?(num)
  prompt_user
  answer = get_user_input
-if answer == 'h'
+ if answer == 'h'
   num+= deal_card
 elsif answer == 's'
   num 
 else 
  invalid_command
- prompt_user
+hit?(num)
 end
 end
-
-
-
-
 
 
 def invalid_command
@@ -57,6 +53,12 @@ end
 #####################################################
 
 def runner
-  # code runner here
+ welcome
+ hand = initial_round
+ until hand > 21 do 
+   hand = hit?(hand)
+   display_card_total(hand)
+ end
+ end_game(hand)
 end
  
